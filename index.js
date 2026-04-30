@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
 
+// 🔥 LIBERAR CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.get("/datahora", (req, res) => {
   const agora = new Date();
 
@@ -10,6 +16,4 @@ app.get("/datahora", (req, res) => {
   });
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Servidor rodando");
-});
+app.listen(process.env.PORT || 3000);
